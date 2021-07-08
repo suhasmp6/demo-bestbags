@@ -117,11 +117,11 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-var port = process.env.PORT || 8000;
-app.set("port", port);
-app.listen(port, () => {
-  console.log("Server running at port " + port);
-});
+var port = process.env.PORT || 443;
+// app.set("port", port);
+// app.listen(port, () => {
+//   console.log("Server running at port " + port);
+// });
 
 // const options = {
 //     key: fs.readFileSync('../privkey.pem'),
@@ -139,19 +139,19 @@ app.listen(port, () => {
 //     }
 //   });
 
-// spdy
-//     .createServer({
-//         key: fs.readFileSync('../privkey.pem'),
-//         cert: fs.readFileSync('../cert.pem')
-//     }, app)
-//     .listen(port, (err) => {
-//         if (err) {
-//             throw new Error(err);
-//         }
-//
-//         /* eslint-disable no-console */
-//         console.log('Listening on port: ' + port + '.');
-//         /* eslint-enable no-console */
-//     });
+spdy
+    .createServer({
+        key: fs.readFileSync('../privkey.pem'),
+        cert: fs.readFileSync('../cert.pem')
+    }, app)
+    .listen(port, (err) => {
+        if (err) {
+            throw new Error(err);
+        }
+
+        /* eslint-disable no-console */
+        console.log('Listening on port: ' + port + '.');
+        /* eslint-enable no-console */
+    });
 
 module.exports = app;
