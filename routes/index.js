@@ -30,7 +30,8 @@ router.get("/", async (req, res) => {
       '</javascripts/displayResourceLoadTime.js>; rel="preload" as="script"',
       '</javascripts/displayResourceSize.js>; rel="preload" as="script"',
       '</javascripts/search.js>; rel="preload" as="script"',
-      '</stylesheets/style.css>; rel="preload" as="style"'
+      '</stylesheets/style.css>; rel="preload" as="style"',
+      '</images/slide1.jpg>; rel="preload" as="image"'
     ])
     res.render("shop/home", { pageName: "Home", products });    
   } catch (error) {
