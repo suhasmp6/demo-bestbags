@@ -22,15 +22,16 @@ router.get("/", async (req, res) => {
     const products = await Product.find({})
       .sort("-createdAt")
       .populate("category");
-    res.append('Link', ['https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-solid-900.woff2; rel="preload" as="font"',
-      'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-brands-400.woff2; rel="preload" as="font"',
-      'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-regular-400.woff2; rel="preload" as="font"',
+    res.append('Link', [
       '</javascripts/displayNavigationTiming.js>; rel="preload" as="script"',
       '</javascripts/main.js>; rel="preload" as="script"',
       '</javascripts/displayResourceLoadTime.js>; rel="preload" as="script"',
       '</javascripts/displayResourceSize.js>; rel="preload" as="script"',
       '</javascripts/search.js>; rel="preload" as="script"',
-      '</stylesheets/style.css>; rel="preload" as="style"'
+      '</stylesheets/style.css>; rel="preload" as="style"',
+      'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-solid-900.woff2; rel="preload" as="font"',
+      'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-brands-400.woff2; rel="preload" as="font"',
+      'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-regular-400.woff2; rel="preload" as="font"'
     ])
     res.render("shop/home", { pageName: "Home", products });    
   } catch (error) {
