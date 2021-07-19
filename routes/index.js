@@ -26,7 +26,8 @@ router.get("/", async (req, res) => {
         .populate("category");
     res.append('Link', ['https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-solid-900.woff2; rel="preload" as="font"',
       'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-brands-400.woff2; rel="preload" as="font"',
-      'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-regular-400.woff2; rel="preload" as="font"'
+      'https://ka-f.fontawesome.com/releases/v5.15.3/webfonts/free-fa-regular-400.woff2; rel="preload" as="font"',
+      '</images/slide1.jpg>; rel="preload" as="image"'
     ])
     let after_preload = new Date();
     let after_preload_time = after_preload.getTime();
