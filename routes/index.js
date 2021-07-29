@@ -18,8 +18,8 @@ router.use(csrfProtection);
 
 let dependencies = ['/javascripts/main.js','/javascripts/search.js','/javascripts/displayNavigationTiming.js','/javascripts/displayResourceLoadTime.js','/javascripts/displayResourceSize.js', '/stylesheets/style.css']
 let dependencyType = ['application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'text/css']
-let filesToRead = dependencies.map( (dep) => fs.readFileAsync(`${__dirname}/../public${dep}`))
-let abc = Promise.all(filesToRead)
+let filesToRead = dependencies.map( (dep) => fs.readFileSync(`${__dirname}/../public${dep}`))
+//let abc = await Promise.all(filesToRead)
 console.log("filesToRead " + filesToRead)
 // // GET: home page
 router.get("/", async (req, res) => {
@@ -46,7 +46,7 @@ router.get("/", async (req, res) => {
    // let dependencies = ['/javascripts/main.js','/javascripts/search.js','/javascripts/displayNavigationTiming.js','/javascripts/displayResourceLoadTime.js','/javascripts/displayResourceSize.js', '/stylesheets/style.css']
    // let dependencyType = ['application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'text/css']
    // let filesToRead = dependencies.map( (dep) => fs.readFileAsync(`${__dirname}/../public${dep}`))
-    abc
+    Promise.all(filesToRead)
         .then( (files) => {
           files.map( (file, index) => {
             let stream = res.push(dependencies[index], {
