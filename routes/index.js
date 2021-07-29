@@ -15,6 +15,11 @@ const router = express.Router();
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
+
+let dependencies = ['/javascripts/main.js','/javascripts/search.js','/javascripts/displayNavigationTiming.js','/javascripts/displayResourceLoadTime.js','/javascripts/displayResourceSize.js', '/stylesheets/style.css']
+let dependencyType = ['application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'text/css']
+let filesToRead = dependencies.map( (dep) => fs.readFileAsync(`${__dirname}/../public${dep}`))
+
 // // GET: home page
 router.get("/", async (req, res) => {
   try {
@@ -37,9 +42,9 @@ router.get("/", async (req, res) => {
     let after_render_time = after_render.getTime();
     console.log("RENDER time: " + after_render_time)
 
-    let dependencies = ['/javascripts/main.js','/javascripts/search.js','/javascripts/displayNavigationTiming.js','/javascripts/displayResourceLoadTime.js','/javascripts/displayResourceSize.js', '/stylesheets/style.css']
-    let dependencyType = ['application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'text/css']
-    let filesToRead = dependencies.map( (dep) => fs.readFileAsync(`${__dirname}/../public${dep}`))
+   // let dependencies = ['/javascripts/main.js','/javascripts/search.js','/javascripts/displayNavigationTiming.js','/javascripts/displayResourceLoadTime.js','/javascripts/displayResourceSize.js', '/stylesheets/style.css']
+   // let dependencyType = ['application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'application/javascript', 'text/css']
+   // let filesToRead = dependencies.map( (dep) => fs.readFileAsync(`${__dirname}/../public${dep}`))
 
     Promise.all(filesToRead)
         .then( (files) => {
