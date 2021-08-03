@@ -23,7 +23,9 @@ router.get("/", async (req, res) => {
       .sort("-createdAt")
       .populate("category");
     res.append('Link', [
-      '</images/slide1.jpg>; rel="preload" as="image"'
+      '</images/slide1.jpg>; rel="preload" as="image"',
+      '</images/slide2.jpg>; rel="preload" as="image"',
+      '</images/slide3.jpg>; rel="preload" as="image"'
     ])
     res.render("shop/home", { pageName: "Home", products });    
   } catch (error) {
